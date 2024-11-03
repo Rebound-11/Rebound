@@ -12,7 +12,7 @@
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
-    <Version>0.0.4</Version>
+    <Version>0.0.3</Version>
     <ImplicitUsings>true</ImplicitUsings>
     <LangVersion>Latest</LangVersion>
     <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
@@ -66,10 +66,10 @@
     <PackageReference Include="Microsoft.TSS" Version="2.1.1" />
     <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.1" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240829007" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240701003-experimental2" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="System.Management" Version="9.0.0-rc.1.24431.7" />
-    <PackageReference Include="WinUIEx" Version="2.4.2" />
+    <PackageReference Include="WinUIEx" Version="2.3.4" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -98,10 +98,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Helpers\Rebound.Helpers.csproj" />
   </ItemGroup>
-  
-    <PropertyGroup>
-            <WindowsSdkPackageVersion>10.0.22621.38</WindowsSdkPackageVersion>
-        </PropertyGroup>
 
   <PropertyGroup>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
