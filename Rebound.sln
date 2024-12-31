@@ -25,9 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebound.ExplorerPhotoPrinti
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Rebound.Delivery", "Delivery\Rebound.Delivery.shproj", "{B6C8C1F3-644E-475F-84C6-214243620014}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rebound.Control", "Control\Rebound.Control.csproj", "{8920EBF9-A483-4A5F-9BB3-AA2E3D8F1269}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebound.Control", "Control\Rebound.Control.csproj", "{8920EBF9-A483-4A5F-9BB3-AA2E3D8F1269}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rebound.Installer", "Installer\Rebound.Installer.csproj", "{0158E7F4-9955-43F7-8978-DC69FD7CCD60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rebound.Installer", "Installer\Rebound.Installer.csproj", "{0158E7F4-9955-43F7-8978-DC69FD7CCD60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rebound.EventViewer", "Rebound.EventViewer\Rebound.EventViewer.csproj", "{36AF765E-1361-4772-A6CB-C990B3464C1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -313,6 +315,30 @@ Global
 		{0158E7F4-9955-43F7-8978-DC69FD7CCD60}.Release|x64.Build.0 = Release|x64
 		{0158E7F4-9955-43F7-8978-DC69FD7CCD60}.Release|x86.ActiveCfg = Release|x86
 		{0158E7F4-9955-43F7-8978-DC69FD7CCD60}.Release|x86.Build.0 = Release|x86
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Debug|Any CPU.Build.0 = Debug|x64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Debug|Any CPU.Deploy.0 = Debug|x64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Debug|ARM64.Build.0 = Debug|ARM64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Debug|x64.ActiveCfg = Debug|x64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Debug|x64.Build.0 = Debug|x64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Debug|x64.Deploy.0 = Debug|x64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Debug|x86.ActiveCfg = Debug|x86
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Debug|x86.Build.0 = Debug|x86
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Debug|x86.Deploy.0 = Debug|x86
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Release|Any CPU.ActiveCfg = Release|x64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Release|Any CPU.Build.0 = Release|x64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Release|Any CPU.Deploy.0 = Release|x64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Release|ARM64.ActiveCfg = Release|ARM64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Release|ARM64.Build.0 = Release|ARM64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Release|ARM64.Deploy.0 = Release|ARM64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Release|x64.ActiveCfg = Release|x64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Release|x64.Build.0 = Release|x64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Release|x64.Deploy.0 = Release|x64
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Release|x86.ActiveCfg = Release|x86
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Release|x86.Build.0 = Release|x86
+		{36AF765E-1361-4772-A6CB-C990B3464C1A}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

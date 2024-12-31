@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Rebound.EventViewer (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Rebound.EventViewer (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
