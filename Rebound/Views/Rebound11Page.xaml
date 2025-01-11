@@ -12,6 +12,7 @@
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:local="using:Rebound.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:lang="using:Rebound.Languages"
     mc:Ignorable="d">
 
     <ScrollViewer>
@@ -47,7 +48,7 @@
                     <TextBlock
                         Margin="115,55,0,0"
                         FontSize="18"
-                        Text="Windows 11 made consistent. Featuring WinUI 3 apps for your everyday tasks."
+                        Text="{x:Bind lang:StringTable.ReboundDesc}"
                         TextWrapping="WrapWholeWords" />
                 </Grid>
                 <ScrollViewer
@@ -178,12 +179,12 @@
                                 <TextBlock
                                     Margin="0,15,0,0"
                                     FontSize="20"
-                                    Text="Get Started" />
+                                    Text="{x:Bind lang:StringTable.ReboundGetStarted}" />
                                 <TextBlock
                                     Margin="0,5,0,0"
                                     FontSize="11"
                                     Opacity="0.7"
-                                    Text="See a short guide on how to install and use Rebound 11.&#x0a;"
+                                    Text="{x:Bind lang:StringTable.ReboundGetStartedDesc}"
                                     TextWrapping="WrapWholeWords" />
                                 <FontIcon
                                     Margin="0,10,0,0"
@@ -213,13 +214,13 @@
                                     Source="/Assets/AppIcons/logo-winui.png" />
                                 <TextBlock
                                     Margin="0,15,0,0"
-                                    FontSize="20"
-                                    Text="WinUI 3 apps" />
+                                    FontSize="18"
+                                    Text="{x:Bind lang:StringTable.ReboundWinUI3}" />
                                 <TextBlock
                                     Margin="0,5,0,0"
-                                    FontSize="11"
+                                    FontSize="10"
                                     Opacity="0.7"
-                                    Text="Rebound 11 uses WinUI 3 apps instead of .msstyles files to make Windows 11 truly consistent."
+                                    Text="{x:Bind lang:StringTable.ReboundWinUI3Desc}"
                                     TextWrapping="WrapWholeWords" />
                                 <FontIcon
                                     Margin="0,10,0,0"
@@ -247,13 +248,13 @@
                                     Glyph="" />
                                 <TextBlock
                                     Margin="0,15,0,0"
-                                    FontSize="20"
-                                    Text="Windows updates" />
+                                    FontSize="18"
+                                    Text="{x:Bind lang:StringTable.ReboundWinUpdates}" />
                                 <TextBlock
                                     Margin="0,5,0,0"
                                     FontSize="11"
                                     Opacity="0.7"
-                                    Text="Rebound 11 does not block Windows updates.&#x0a;"
+                                    Text="{x:Bind lang:StringTable.ReboundWinUpdatesDesc}"
                                     TextWrapping="WrapWholeWords" />
                                 <FontIcon
                                     Margin="0,10,0,0"
@@ -293,13 +294,13 @@
                                 </Grid>
                                 <TextBlock
                                     Margin="0,15,0,0"
-                                    FontSize="20"
-                                    Text="Rebound 11 updates" />
+                                    FontSize="18"
+                                    Text="{x:Bind lang:StringTable.ReboundUpdates}" />
                                 <TextBlock
                                     Margin="0,5,0,0"
                                     FontSize="11"
                                     Opacity="0.7"
-                                    Text="All Rebound 11 updates are done through the Rebound Hub.&#x0a;"
+                                    Text="{x:Bind lang:StringTable.ReboundUpdatesDesc}"
                                     TextWrapping="WrapWholeWords" />
                                 <FontIcon
                                     Margin="0,10,0,0"
@@ -332,7 +333,7 @@
                                     Margin="0,5,0,0"
                                     FontSize="11"
                                     Opacity="0.7"
-                                    Text="See the project details on GitHub.&#x0a;&#x0a; "
+                                    Text="{x:Bind lang:StringTable.ReboundGithubDesc}"
                                     TextWrapping="WrapWholeWords" />
                                 <FontIcon
                                     Margin="0,10,0,0"
@@ -350,11 +351,11 @@
                 </ScrollViewer>
                 <InfoBar
                     x:Name="UpdateBar"
-                    Title="A new update for Rebound 11 is available!"
+                    Title="{x:Bind lang:StringTable.ReboundNewUpdateAvail}"
                     Margin="0,0,0,25"
                     Severity="Warning">
                     <InfoBar.ActionButton>
-                        <Button Content="Download">
+                        <Button Content="{x:Bind lang:StringTable.ReboundUpdateDownload}">
                             <interactivity:Interaction.Behaviors>
                                 <core:EventTriggerBehavior EventName="Click">
                                     <behaviors:NavigateToUriAction NavigateUri="https://ivirius.vercel.app/rebound11" />
@@ -401,7 +402,7 @@
                         Margin="110,20,0,0"
                         FontSize="20"
                         FontWeight="SemiBold"
-                        Text="Rebound 11 is installed." />
+                        Text="{x:Bind lang:StringTable.ReboundInstalled}" />
                     <TextBlock
                         Margin="110,45,0,0"
                         Opacity="0.5"
@@ -412,22 +413,22 @@
                         VerticalAlignment="Top"
                         Orientation="Horizontal"
                         Spacing="8">
-                        <Button HorizontalAlignment="Right" Click="Button_Click_2" ToolTipService.ToolTip="Uninstall Rebound 11 apps and files.">
+                        <Button HorizontalAlignment="Right" Click="Button_Click_2" ToolTipService.ToolTip="{x:Bind lang:StringTable.ReboundUninstallTooltip}">
                             <StackPanel Orientation="Horizontal" Spacing="10">
                                 <Image
                                     x:Name="Admin5"
                                     Width="16"
                                     Source="ms-appx:///AppRT/Exported/imageres_78.ico" />
-                                <TextBlock Text="Uninstall" />
+                                <TextBlock Text="{x:Bind lang:StringTable.ReboundUninstall}" />
                             </StackPanel>
                         </Button>
-                        <Button HorizontalAlignment="Right" Click="Button_Click_3" ToolTipService.ToolTip="Uninstall Rebound 11 apps, files, and associated apps (for example: Files App).">
+                        <Button HorizontalAlignment="Right" Click="Button_Click_3" ToolTipService.ToolTip="{x:Bind lang:StringTable.ReboundFullUninstallTooltip}">
                             <StackPanel Orientation="Horizontal" Spacing="10">
                                 <Image
                                     x:Name="Admin6"
                                     Width="16"
                                     Source="ms-appx:///AppRT/Exported/imageres_78.ico" />
-                                <TextBlock Text="Full Uninstall" />
+                                <TextBlock Text="{x:Bind lang:StringTable.ReboundFullUninstall}" />
                             </StackPanel>
                         </Button>
                         <Button
@@ -439,13 +440,13 @@
                                     x:Name="Admin1"
                                     Width="16"
                                     Source="ms-appx:///AppRT/Exported/imageres_78.ico" />
-                                <TextBlock Text="Patch or Update" />
+                                <TextBlock Text="{x:Bind lang:StringTable.ReboundPatchOrUpdate}" />
                             </StackPanel>
                         </Button>
                     </StackPanel>
                     <StackPanel Margin="0,125,0,0" Spacing="8">
                         <InfoBar
-                            Title="If you just downloaded a new version of Rebound Hub, please update Rebound 11 as well."
+                            Title="{x:Bind lang:StringTable.ReboundPatchOrUpdateInfoBar}"
                             IsClosable="False"
                             IsOpen="True"
                             Severity="Informational" />
@@ -453,6 +454,11 @@
                             <SettingsControls:SettingsCard.HeaderIcon>
                                 <FontIcon Glyph="" />
                             </SettingsControls:SettingsCard.HeaderIcon>
+                            <interactivity:Interaction.Behaviors>
+                                <core:EventTriggerBehavior EventName="Click">
+                                    <behaviors:NavigateToUriAction NavigateUri="ms-settings:windowsupdate" />
+                                </core:EventTriggerBehavior>
+                            </interactivity:Interaction.Behaviors>
                         </SettingsControls:SettingsCard>
                         <SettingsControls:SettingsCard
                             Click="SettingsCard_Click"
@@ -503,11 +509,11 @@
                         Margin="110,20,0,0"
                         FontSize="20"
                         FontWeight="SemiBold"
-                        Text="Rebound 11 is not installed." />
+                        Text="{x:Bind lang:StringTable.ReboundNotInstalled}" />
                     <TextBlock
                         Margin="110,45,0,0"
                         Opacity="0.5"
-                        Text="You can install Rebound 11 here." />
+                        Text="{x:Bind lang:StringTable.ReboundInstallHere}" />
                     <StackPanel
                         Margin="0,30,0,0"
                         HorizontalAlignment="Right"
@@ -523,7 +529,7 @@
                                     x:Name="Admin3"
                                     Width="16"
                                     Source="ms-appx:///AppRT/Exported/imageres_78.ico" />
-                                <TextBlock Text="Install" />
+                                <TextBlock Text="{x:Bind lang:StringTable.ReboundInstall}" />
                             </StackPanel>
                         </Button>
                     </StackPanel>
@@ -567,11 +573,11 @@
                         Margin="110,20,0,0"
                         FontSize="20"
                         FontWeight="SemiBold"
-                        Text="Configure Rebound 11 Installation" />
+                        Text="{x:Bind lang:StringTable.ReboundConfigureInst}" />
                     <TextBlock
                         Margin="110,45,0,0"
                         Opacity="0.5"
-                        Text="Choose the apps you would like to install." />
+                        Text="{x:Bind lang:StringTable.ReboundChooseApps}" />
                     <StackPanel
                         Margin="0,30,0,0"
                         HorizontalAlignment="Right"
@@ -582,7 +588,7 @@
                             HorizontalAlignment="Right"
                             Click="Button_Click"
                             Style="{ThemeResource AccentButtonStyle}">
-                            <TextBlock Text="Install Rebound 11" />
+                            <TextBlock Text="{x:Bind lang:StringTable.ReboundInstall11}" />
                         </Button>
                     </StackPanel>
                     <StackPanel Margin="0,125,0,0" Spacing="8">
@@ -599,21 +605,21 @@
                                 Grid.Column="0"
                                 Padding="12"
                                 HorizontalAlignment="Stretch"
-                                Content="☁️ Lightweight"
+                                Content="{x:Bind lang:StringTable.ReboundTemplateLight}"
                                 FontSize="20"
                                 IsEnabled="False" />
                             <Button
                                 Grid.Column="2"
                                 Padding="12"
                                 HorizontalAlignment="Stretch"
-                                Content="✨ Recommended"
+                                Content="{x:Bind lang:StringTable.ReboundTemplateRecommended}"
                                 FontSize="20"
                                 IsEnabled="False" />
                             <Button
                                 Grid.Column="4"
                                 Padding="12"
                                 HorizontalAlignment="Stretch"
-                                Content="⚙️ Full"
+                                Content="{x:Bind lang:StringTable.ReboundTemplateFull}"
                                 FontSize="20"
                                 IsEnabled="False" />
                         </Grid>
@@ -627,19 +633,19 @@
                                 <StackPanel>
                                     <CheckBox
                                         x:Name="FilesCheck"
-                                        Content="File Explorer (Files - 3rd party)"
+                                        Content="{x:Bind lang:StringTable.ReboundFilesCheck}"
                                         IsChecked="True"
                                         IsEnabled="False" />
-                                    <InfoBar Title="Files will not be uninstalled by Rebound Hub and you will have to uninstall it manually." IsClosable="False" Margin="0, 8">
+                                    <InfoBar Title="{x:Bind lang:StringTable.ReboundFilesBar}" IsClosable="False" Margin="0, 8">
                                         
                                     </InfoBar>
                                     <CheckBox
-                                        Content="Remote Desktop"
+                                        Content="{x:Bind lang:StringTable.ReboundRemoteDesktopCheck}"
                                         IsChecked="True"
                                         IsEnabled="False" />
                                     <CheckBox
                                         x:Name="RunCheck"
-                                        Content="Run"
+                                        Content="{x:Bind lang:StringTable.ReboundRunCheck}"
                                         IsChecked="True" />
                                     <CheckBox
                                         Content="Steps Recorder"
@@ -654,13 +660,13 @@
                                         Header="WordPad"
                                         IsEnabled="False"
                                         SelectedIndex="2">
-                                        <RadioButton Content="Keep original" />
-                                        <RadioButton Content="Ivirius Text Editor (partial launch support)" />
-                                        <RadioButton Content="Ivirius Text Editor Plus (recommended)" />
+                                        <RadioButton Content="{x:Bind lang:StringTable.ReboundKeepOriginalWordPad}" />
+                                        <RadioButton Content="{x:Bind lang:StringTable.ReboundTextEditor}" />
+                                        <RadioButton Content="{x:Bind lang:StringTable.ReboundTextEditorPlus}" />
                                     </RadioButtons>
                                     <InfoBar
                                         x:Name="ivrpluswarning"
-                                        Title="You must have a valid copy of Ivirius Text Editor installed on your PC to set it as the default Rebound 11 WordPad replacement. Consider purchasing Ivirius Text Editor Plus and installing this option later if you haven't already."
+                                        Title="{x:Bind lang:StringTable.ReboundTextEditorPlusWarn}"
                                         Margin="0,10,0,0"
                                         HorizontalAlignment="Stretch"
                                         IsClosable="False"
@@ -674,27 +680,27 @@
                                 Header="Productivity">
                                 <StackPanel>
                                     <CheckBox
-                                        Content="Character Map"
+                                        Content="{x:Bind lang:StringTable.ReboundCharMap}"
                                         IsChecked="True"
                                         IsEnabled="False" />
                                     <CheckBox
-                                        Content="Mobility Center (All devices)"
+                                        Content="{x:Bind lang:StringTable.ReboundMobilityCenter}"
                                         IsChecked="True"
                                         IsEnabled="False" />
                                     <CheckBox
                                         x:Name="OSKCheck"
-                                        Content="On-screen keyboard"
+                                        Content="{x:Bind lang:StringTable.Keyboard}"
                                         IsChecked="True" />
                                     <CheckBox
-                                        Content="Presentation Settings (All devices)"
+                                        Content="{x:Bind lang:StringTable.ReboundPresentationSettings}"
                                         IsChecked="True"
                                         IsEnabled="False" />
                                     <CheckBox
-                                        Content="Sticky Keys and Filter keys"
+                                        Content="{x:Bind lang:StringTable.ReboundStickyKeys}"
                                         IsChecked="True"
                                         IsEnabled="False" />
                                     <CheckBox
-                                        Content="Volume Mixer (sndvol.exe)"
+                                        Content="{x:Bind lang:StringTable.ReboundVolMixer}"
                                         IsChecked="True"
                                         IsEnabled="False" />
                                 </StackPanel>
@@ -702,9 +708,9 @@
                             <Expander
                                 HorizontalAlignment="Stretch"
                                 HorizontalContentAlignment="Stretch"
-                                Header="System Tools">
+                                Header="{x:Bind lang:StringTable.ReboundSysTools}">
                                 <StackPanel>
-                                    <CheckBox Content="Authorization Manager" IsEnabled="False" />
+                                    <CheckBox Content="{x:Bind lang:StringTable.ReboundAuthManager}" IsEnabled="False" />
                                     <CheckBox
                                         Content="Certificate Manager"
                                         IsChecked="True"
@@ -713,45 +719,45 @@
                                     <CheckBox Content="Component Services" IsEnabled="False" />
                                     <CheckBox Content="Computer Management" IsEnabled="False" />
                                     <CheckBox
-                                        Content="Control Panel - You cannot disable this option."
+                                        Content="{x:Bind lang:StringTable.ReboundControlPanel}"
                                         IsChecked="True"
                                         IsEnabled="False" />
                                     <CheckBox
                                         x:Name="DefragCheck"
-                                        Content="Defragment and Optimize Drives"
+                                        Content="{x:Bind lang:StringTable.Defrag}"
                                         IsChecked="True" />
                                     <CheckBox
                                         x:Name="DiskCleanupCheck"
-                                        Content="Disk Cleanup"
+                                        Content="{x:Bind lang:StringTable.Cleanup}"
                                         IsChecked="True" />
-                                    <CheckBox Content="Malicious Software Removal Tool" IsEnabled="False" />
-                                    <CheckBox Content="Memory Diagnostic" IsEnabled="False" />
-                                    <CheckBox Content="Print Management" IsEnabled="False" />
+                                    <CheckBox Content="{x:Bind lang:StringTable.ReboundMSRT}" IsEnabled="False" />
+                                    <CheckBox Content="{x:Bind lang:StringTable.ReboundMemoryDebug}" IsEnabled="False" />
+                                    <CheckBox Content="{x:Bind lang:StringTable.ReboundPrintManagement}" IsEnabled="False" />
                                     <CheckBox
-                                        Content="Registry Editor (Registry Editor Valley - 3rd party)"
+                                        Content="{x:Bind lang:StringTable.ReboundRegistryEditor}"
                                         IsChecked="True"
                                         IsEnabled="False" />
-                                    <CheckBox Content="Services" IsEnabled="False" />
-                                    <CheckBox Content="System Configuration" IsEnabled="False" />
+                                    <CheckBox Content="{x:Bind lang:StringTable.ReboundServices}" IsEnabled="False" />
+                                    <CheckBox Content="{x:Bind lang:StringTable.ReboundSysConf}" IsEnabled="False" />
                                     <CheckBox
-                                        Content="System Information"
+                                        Content="{x:Bind lang:StringTable.ReboundSysInfo}"
                                         IsChecked="True"
                                         IsEnabled="False" />
-                                    <CheckBox Content="System Restore" IsEnabled="False" />
-                                    <CheckBox Content="Task Scheduler" IsEnabled="False" />
-                                    <CheckBox x:Name="TPMCheck" Content="TPM Management" />
+                                    <CheckBox Content="{x:Bind lang:StringTable.ReboundSysRestore}" IsEnabled="False" />
+                                    <CheckBox Content="{x:Bind lang:StringTable.Tasks}" IsEnabled="False" />
+                                    <CheckBox x:Name="TPMCheck" Content="{x:Bind lang:StringTable.ReboundTPMmanagement}" />
                                     <CheckBox
                                         x:Name="UACCheck"
-                                        Content="User Account Control settings"
+                                        Content="{x:Bind lang:StringTable.ReboundUAC}"
                                         IsChecked="True" />
-                                    <CheckBox Content="User Account Manager" IsEnabled="False" />
-                                    <CheckBox Content="Windows Defender Firewall" IsEnabled="False" />
+                                    <CheckBox Content="{x:Bind lang:StringTable.ReboundAccountManager}" IsEnabled="False" />
+                                    <CheckBox Content="{x:Bind lang:StringTable.ReboundFirewall}" IsEnabled="False" />
                                 </StackPanel>
                             </Expander>
                             <Expander
                                 HorizontalAlignment="Stretch"
                                 HorizontalContentAlignment="Left"
-                                Header="Additional software">
+                                Header="{x:Bind lang:StringTable.ReboundAdditionalSoft}">
                                 <StackPanel x:Name="AdditionalSoftwarePanel">
                                     <HyperlinkButton Content="Screenbox video player" />
                                     <HyperlinkButton Content="Lively Weather" />
@@ -766,13 +772,13 @@
                                 <TextBlock
                                     Margin="5"
                                     Style="{StaticResource SubtitleTextBlockStyle}"
-                                    Text="Installation" />
+                                    Text="{x:Bind lang:StringTable.ReboundInstallation}" />
                                 <InfoBar
-                                    Title="Before you proceed, please read the following disclaimer:"
+                                    Title="{x:Bind lang:StringTable.ReboundReadDisclaimer}"
                                     HorizontalAlignment="Stretch"
                                     IsClosable="False"
                                     IsOpen="True"
-                                    Message="Rebound 11 is not a Windows mod. By clicking &quot;Install&quot;, Rebound 11 will replace shortcuts to system apps and install the required packages and certificates. All changes can be reverted after the installation is finished. Do not shut down your computer or close the installer to prevent damaging your PC. Rebound 11 does not modify Windows and will install standalone WinUI 3 apps to modernize your system instead of replacing system files. Ivirius is not responsible for any damages caused to your computer. The risk of damaging your PC is very low, but as with any software, still existent. Every Win32 app will still be available to use if Rebound 11 does not work properly. No system restore points are required to revert the changes.&#x0a;&#x0a;Rebound Hub will stop explorer.exe and restart it after the installation process is finished. Please save your work before proceeding."
+                                    Message="{x:Bind lang:StringTable.ReboundDisclaimer}"
                                     Severity="Warning" />
                             </StackPanel>
                         </StackPanel>
@@ -787,7 +793,7 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Spacing="25">
                             <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Fluent, consistent." />
-                            <TextBlock Text="Rebound 11 replaces the start menu shortcuts of legacy Win32 apps with modern WinUI 3 tools. We made sure to fix as many bugs as we could to make your experience with Rebound 11 the best." TextWrapping="WrapWholeWords" />
+                            <TextBlock Text="{x:Bind lang:StringTable.ReboundText1}" TextWrapping="WrapWholeWords" />
                         </StackPanel>
                         <Grid Grid.Column="2" VerticalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
@@ -935,8 +941,8 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Spacing="25">
-                            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="No visual glitches." />
-                            <TextBlock Text="Rebound 11 fixes the well-known maximize button hover alignment issue on all modernized apps." TextWrapping="WrapWholeWords" />
+                            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind lang:StringTable.ReboundNoGlitches}" />
+                            <TextBlock Text="{x:Bind lang:StringTable.ReboundText2}" TextWrapping="WrapWholeWords" />
                         </StackPanel>
                         <Grid
                             Grid.Column="2"
@@ -1133,8 +1139,8 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Spacing="25">
-                            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Replacing old UI controls." />
-                            <TextBlock Text="Rebound 11 replaces old UI controls in the new apps and uses WinUI 3 standard controls." TextWrapping="WrapWholeWords" />
+                            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind lang:StringTable.ReboundReplacingOldUiControls}" />
+                            <TextBlock Text="{x:Bind lang:StringTable.ReboundText3}" TextWrapping="WrapWholeWords" />
                         </StackPanel>
                         <Grid Grid.Column="2" VerticalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
@@ -1290,7 +1296,7 @@
                                                     FontSize="18"
                                                     FontWeight="Light"
                                                     Foreground="#003399"
-                                                    Text="Old" />
+                                                    Text="{x:Bind lang:StringTable.ReboundOld}" />
                                                 <TextBlock
                                                     Margin="0,2,40,2"
                                                     HorizontalAlignment="Right"
@@ -1308,7 +1314,7 @@
                                             </Grid>
                                         </Border>
                                         <InfoBar
-                                            Title="New"
+                                            Title="{x:Bind lang:StringTable.ReboundNew}"
                                             Margin="25,100,25,0"
                                             HorizontalContentAlignment="Stretch"
                                             IsClosable="False"
@@ -1318,7 +1324,7 @@
                                             <Expander
                                                 Margin="-35,0,10,10"
                                                 HorizontalAlignment="Stretch"
-                                                Header="View more" />
+                                                Header="{x:Bind lang:StringTable.ReboundViewMore}" />
                                         </InfoBar>
                                     </Grid>
                                 </Border>
@@ -1332,8 +1338,8 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Spacing="25">
-                            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Make Windows 11 consistent without risks." />
-                            <TextBlock Text="Modernize Windows 11 with actual WinUI 3 apps, as intended by Microsoft. Rebound 11 keeps Windows updates enabled, does not modify the system, and aims to be as consistent as possible without changing system files." TextWrapping="WrapWholeWords" />
+                            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind lang:StringTable.ReboundTextTitle4}" />
+                            <TextBlock Text="{x:Bind lang:StringTable.ReboundText4}" TextWrapping="WrapWholeWords" />
                         </StackPanel>
                         <Grid
                             Grid.Column="2"
