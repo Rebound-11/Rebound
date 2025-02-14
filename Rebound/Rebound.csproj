@@ -94,7 +94,7 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.241114004-experimental1" />
     <PackageReference Include="System.Drawing.Common" Version="9.0.0" />
-    <PackageReference Include="System.Management" Version="9.0.0" />
+    <PackageReference Include="System.Management" Version="9.0.1" />
     <PackageReference Include="WinUIEx" Version="2.5.0" />
 	  <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
