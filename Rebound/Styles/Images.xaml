@@ -1,0 +1,25 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.ThemeDictionaries>
+
+        <ResourceDictionary x:Key="Default">
+
+            <ImageSource x:Key="HeroBackgroundBitmapImage">ms-appx:///Assets/Backgrounds/BackgroundDarkNew.png</ImageSource>
+
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Light">
+
+            <ImageSource x:Key="HeroBackgroundBitmapImage">ms-appx:///Assets/Backgrounds/BackgroundLightNew.png</ImageSource>
+
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="HighContrast">
+
+            <ImageSource x:Key="HeroBackgroundBitmapImage">ms-appx:///Assets/Backgrounds/BackgroundDarkNew.png</ImageSource>
+
+        </ResourceDictionary>
+
+    </ResourceDictionary.ThemeDictionaries>
+
+</ResourceDictionary>

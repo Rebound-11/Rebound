@@ -2,16 +2,24 @@
 // Licensed under the MIT License.
 
 using System;
+using System.ComponentModel;
 using System.Numerics;
+using System.Runtime.CompilerServices;
+
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.WinUI;
 using CommunityToolkit.WinUI.Animations;
+
 using Microsoft.Graphics.Canvas.Effects;
 using Microsoft.UI;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
+using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml.Media.Imaging;
+
 using Windows.UI;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -20,8 +28,11 @@ using Windows.UI;
 namespace WinUIGallery.Controls
 {
     // ATTRIBUTION: @RykenApps
-    public sealed partial class HomePageHeaderImage : UserControl
+    public sealed partial class HomePageHeaderImage : UserControl, INotifyPropertyChanged
     {
+        public static readonly DependencyProperty ImageProperty =
+            DependencyProperty.Register("Image", typeof(ImageSource), typeof(HomePageHeaderImage), new PropertyMetadata(new BitmapImage()));
+
         private Compositor _compositor;
         private CompositionLinearGradientBrush _imageGridBottomGradientBrush;
         private CompositionEffectBrush _imageGridEffectBrush;
@@ -81,9 +92,18 @@ namespace WinUIGallery.Controls
             ElementCompositionPreview.SetElementChildVisual(ImageGridSurfaceRec, _imageGridSpriteVisual);
         }
 
-        public string Path
+        public ImageSource Image
         {
-            get; set;
+            get
+            {
+                return (ImageSource)GetValue(ImageProperty);
+            }
+            set
+            {
+                SetValue(ImageProperty, value);
+                OnPropertyChanged();
+                AnimateImage();
+            }
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
@@ -132,6 +152,13 @@ namespace WinUIGallery.Controls
             ani.SetReferenceParameter("Visual", _imageGridVisual);
             ani.Target = target;
             return ani;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

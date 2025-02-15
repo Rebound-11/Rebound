@@ -5,30 +5,29 @@ using System.Linq;
 using System.Net.Http;
 using System.Security.Principal;
 using System.Threading.Tasks;
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+
 using WinUIEx;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace Rebound.Views;
-/// <summary>
-/// An empty page that can be used on its own or navigated to within a Frame.
-/// </summary>
+
 public sealed partial class Rebound11Page : Page
 {
     public Rebound11Page()
     {
         this.InitializeComponent();
-        if (IsAdmin() == true)
+
+        if (IsAdmin())
         {
             Admin1.Visibility = Visibility.Collapsed;
             Admin3.Visibility = Visibility.Collapsed;
             Admin5.Visibility = Visibility.Collapsed;
             Admin6.Visibility = Visibility.Collapsed;
         }
-        if (IsReboundInstalled() == true)
+
+        if (IsReboundInstalled())
         {
             Rebound11IsInstalledGrid.Visibility = Visibility.Visible;
             Rebound11IsInstallingGrid.Visibility = Visibility.Collapsed;
@@ -42,8 +41,8 @@ public sealed partial class Rebound11Page : Page
             Rebound11IsNotInstalledGrid.Visibility = Visibility.Visible;
             DetailsPanel.Visibility = Visibility.Visible;
         }
-        GetWallpaper();
-        if (string.Join(" ", Environment.GetCommandLineArgs().Skip(1)).Contains("INSTALLREBOUND11"))
+
+        if (string.Join(" ", Environment.GetCommandLineArgs().Skip(1)).ToUpperInvariant().Contains("INSTALLREBOUND11"))
         {
             Rebound11IsInstalledGrid.Visibility = Visibility.Collapsed;
             Rebound11IsInstallingGrid.Visibility = Visibility.Visible;
@@ -51,27 +50,6 @@ public sealed partial class Rebound11Page : Page
             DetailsPanel.Visibility = Visibility.Visible;
         }
         _ = CheckForUpdatesAsync();
-    }
-
-    public async void GetWallpaper()
-    {
-        try
-        {
-            if (ActualTheme == ElementTheme.Light)
-            {
-                BKGImage.Path = "/Assets/Backgrounds/BackgroundLight.png";
-            }
-            if (ActualTheme == ElementTheme.Dark)
-            {
-                BKGImage.Path = "/Assets/Backgrounds/BackgroundDark.png";
-            }
-            await Task.Delay(100);
-            GetWallpaper();
-        }
-        catch
-        {
-
-        }
     }
 
     public bool IsAdmin()
@@ -118,6 +96,7 @@ public sealed partial class Rebound11Page : Page
             {
                 // A new version is available
                 UpdateBar.IsOpen = true;
+
                 if (latestVersion.Contains("ALPHA"))
                 {
                     UpdateBar.Title = $"A new ALPHA release is available for Rebound Hub and Rebound 11! (New version: {latestVersion})";
@@ -125,6 +104,7 @@ public sealed partial class Rebound11Page : Page
                     UpdateBar.Severity = InfoBarSeverity.Warning;
                     return;
                 }
+                
                 if (latestVersion.Contains("DEV"))
                 {
                     UpdateBar.Title = $"A new DEV release is available for Rebound Hub and Rebound 11! (New version: {latestVersion})";
@@ -132,6 +112,7 @@ public sealed partial class Rebound11Page : Page
                     UpdateBar.Severity = InfoBarSeverity.Warning;
                     return;
                 }
+                
                 if (latestVersion.Contains("BETA"))
                 {
                     UpdateBar.Title = $"A new BETA release is available for Rebound Hub and Rebound 11! (New version: {latestVersion})";
@@ -139,12 +120,9 @@ public sealed partial class Rebound11Page : Page
                     UpdateBar.Severity = InfoBarSeverity.Warning;
                     return;
                 }
-                else
-                {
-                    UpdateBar.Title = $"A new update is available for Rebound Hub and Rebound 11! (New version: {latestVersion})";
-                    UpdateBar.Severity = InfoBarSeverity.Success;
-                    return;
-                }
+
+                UpdateBar.Title = $"A new update is available for Rebound Hub and Rebound 11! (New version: {latestVersion})";
+                UpdateBar.Severity = InfoBarSeverity.Success;
             }
         }
         catch (Exception)
@@ -166,6 +144,7 @@ public sealed partial class Rebound11Page : Page
             Verb = "runas",
             Arguments = @$"Start-Process ""shell:AppsFolder\d6ef5e04-e9da-4e22-9782-8031af8beae7_yejd587sfa94t!App"" -ArgumentList ""INSTALLREBOUND11"" -Verb RunAs"
         };
+
         var process = Process.Start(info);
 
         // Wait for the process to exit before proceeding
@@ -183,6 +162,7 @@ public sealed partial class Rebound11Page : Page
             Verb = "runas",
             Arguments = @$"Start-Process ""shell:AppsFolder\d6ef5e04-e9da-4e22-9782-8031af8beae7_yejd587sfa94t!App"" -ArgumentList ""UNINSTALL"" -Verb RunAs"
         };
+
         var process = Process.Start(info);
 
         // Wait for the process to exit before proceeding
@@ -202,6 +182,7 @@ public sealed partial class Rebound11Page : Page
             Verb = "runas",
             Arguments = @$"Start-Process ""shell:AppsFolder\d6ef5e04-e9da-4e22-9782-8031af8beae7_yejd587sfa94t!App"" -ArgumentList ""UNINSTALLFULL"" -Verb RunAs"
         };
+
         var process = Process.Start(info);
 
         // Wait for the process to exit before proceeding

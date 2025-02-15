@@ -9,9 +9,7 @@
     xmlns:winuiex="using:WinUIEx"
     mc:Ignorable="d">
 
-    <Grid
-        Background="Black"
-        RequestedTheme="Dark">
+    <Grid Background="Black" RequestedTheme="Dark">
         <StackPanel
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
@@ -114,4 +112,5 @@
             Text="Please do not turn off your computer. Rebound 11 is installing essential files.&#x0a;You can revert all changes after the installation."
             TextWrapping="WrapWholeWords" />
     </Grid>
+
 </winuiex:WindowEx>

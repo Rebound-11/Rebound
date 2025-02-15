@@ -76,4 +76,5 @@
             Text="Please do not turn off your computer. Rebound 11 is modifying essential files.&#x0a;You can revert all changes after the installation."
             TextWrapping="WrapWholeWords" />
     </Grid>
+
 </winuiex:WindowEx>

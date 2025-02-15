@@ -12,6 +12,7 @@
     Loading="OnLoading"
     Unloaded="OnUnloaded"
     mc:Ignorable="d">
+
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
@@ -33,27 +34,30 @@
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+
     <Grid Margin="0,-100,0,0">
         <Grid
             x:Name="ImageGrid"
             Background="{ThemeResource BackgroundGradient}"
             Opacity="0">
+
             <Image
                 x:Name="HeroImage"
                 toolkit:VisualExtensions.NormalizedCenterPoint="0.5"
                 ImageOpened="OnImageOpened"
                 Opacity="{ThemeResource ImageOpacity}"
-                Source="{x:Bind Path}"
+                Source="{x:Bind Image, Mode=OneWay}"
                 Stretch="UniformToFill" />
 
             <Image
                 x:Name="HeroOverlayImage"
                 toolkit:VisualExtensions.NormalizedCenterPoint="0.5"
                 Opacity="{ThemeResource ImageOpacity}"
-                Source="{x:Bind Path}"
+                Source="{x:Bind Image, Mode=OneWay}"
                 Stretch="UniformToFill" />
 
         </Grid>
         <Rectangle x:Name="ImageGridSurfaceRec" Fill="Transparent" />
     </Grid>
+
 </UserControl>

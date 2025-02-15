@@ -2,9 +2,10 @@
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+
 using CommunityToolkit.WinUI.Helpers;
+
 using Microsoft.Graphics.Display;
-using Microsoft.UI;
 using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -12,9 +13,12 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Win32;
+
 using Rebound.Helpers;
 using Rebound.Views;
+
 using Windows.Graphics;
+
 using WinUIEx;
 using WinUIEx.Messaging;
 
@@ -28,7 +32,6 @@ namespace Rebound;
 public sealed partial class MainWindow : WindowEx
 {
     public bool AllowSizeCheck = false;
-    private readonly bool isCrimsonUIEnabled = false;
 
     public async void CheckWindowProperties()
     {
@@ -101,12 +104,6 @@ public sealed partial class MainWindow : WindowEx
         _msgMonitor.WindowMessageReceived -= Event;
         _msgMonitor.WindowMessageReceived += Event;
 
-        if (isCrimsonUIEnabled == true)
-        {
-            AppWindow.TitleBar.PreferredHeightOption = Microsoft.UI.Windowing.TitleBarHeightOption.Collapsed;
-            CrimsonUIButtons.Visibility = Visibility.Visible;
-            LoadBounds();
-        }
         mon = new RegistryMonitor(@"Software\Microsoft\Windows\DWM");
         mon.Start();
         var x = new ThemeListener();
@@ -297,43 +294,6 @@ public sealed partial class MainWindow : WindowEx
 
     private void CheckFocus()
     {
-        if (IsAccentColorEnabledForTitleBars() == true)
-        {
-            try
-            {
-                if (AccentStrip != null)
-                {
-                    AccentStrip.Visibility = Visibility.Visible;
-                }
-
-                if (!windowFocused)
-                {
-                    buttonBrush = new SolidColorBrush(Colors.White);
-                    AccentStrip.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    buttonBrush = Application.Current.Resources["TextFillColorDisabledBrush"] as SolidColorBrush;
-                    AccentStrip.Visibility = Visibility.Collapsed;
-                }
-            }
-            catch { }
-        }
-        else
-        {
-            try
-            {
-                if (AccentStrip != null)
-                {
-                    AccentStrip.Visibility = Visibility.Collapsed;
-                }
-
-                buttonBrush = !windowFocused
-                    ? Application.Current.Resources["TextFillColorPrimaryBrush"] as SolidColorBrush
-                    : Application.Current.Resources["TextFillColorDisabledBrush"] as SolidColorBrush;
-            }
-            catch { }
-        }
         UpdateBrush();
     }
 
@@ -341,10 +301,10 @@ public sealed partial class MainWindow : WindowEx
     {
         try
         {
-            Close.Foreground = buttonBrush;
-            CrimsonMaxRes.Foreground = buttonBrush;
-            Minimize.Foreground = buttonBrush;
-            WindowTitle.Foreground = buttonBrush;
+            //Close.Foreground = buttonBrush;
+            //CrimsonMaxRes.Foreground = buttonBrush;
+            //Minimize.Foreground = buttonBrush;
+            //WindowTitle.Foreground = buttonBrush;
         }
         catch
         {
@@ -683,360 +643,7 @@ public sealed partial class MainWindow : WindowEx
             }
         }
     }
-    /*
-    #region MaximizeButton
 
-    WindowMessageMonitor _msgMonitor;
-
-    public bool isInMaxButton = false;
-
-    private void CrimsonMaxRes_PointerEntered(object sender, PointerRoutedEventArgs e)
-    {
-        isInMaxButton = true;
-    }
-    private void CrimsonMaxRes_PointerExited(object sender, PointerRoutedEventArgs e)
-    {
-        isInMaxButton = false;
-    }
-
-    private void CrimsonMaxRes_PointerPressed(object sender, PointerRoutedEventArgs e)
-    {
-        isInMaxButton = false;
-    }
-
-    private void CrimsonMaxRes_PointerMoved(object sender, PointerRoutedEventArgs e)
-    {
-        if (_msgMonitor == null) _msgMonitor = new WindowMessageMonitor(this);
-        IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-        _msgMonitor.WindowMessageReceived += Event;
-        async void Event(object sender, WindowMessageEventArgs e)
-        {
-            const int WM_NCLBUTTONDOWN = 0x00A1;
-            const int WM_NCHITTEST = 0x0084;
-            const int WM_NCLBUTTONUP = 0x00A2;
-            const int WM_NCMOUSELEAVE = 0x02A2;
-            switch (e.Message.MessageId)
-            {
-                default:
-                    {
-                        e.Result = new IntPtr(0);
-                        e.Handled = true;
-                        break;
-                    }
-                case WM_NCHITTEST:
-                    {
-                        if (isInMaxButton == true)
-                        {
-                            e.Result = new IntPtr(9);
-                            e.Handled = true;
-                            VisualStateManager.GoToState(CrimsonMaxRes, "PointerOver", true);
-                            await Task.Delay(1000);
-                            _msgMonitor.WindowMessageReceived -= Event;
-                            _msgMonitor.Dispose();
-                        }
-                        else
-                        {
-                            e.Result = new IntPtr(0);
-                            e.Handled = true;
-                            VisualStateManager.GoToState(CrimsonMaxRes, "Normal", true);
-                            _msgMonitor.WindowMessageReceived -= Event;
-                            _msgMonitor.Dispose();
-                        }
-                        break;
-                    }
-                case WM_NCLBUTTONDOWN:
-                    {
-                        e.Result = new IntPtr(0);
-                        e.Handled = true;
-                        VisualStateManager.GoToState(CrimsonMaxRes, "Pressed", true);
-                        break;
-                    }
-                case WM_NCLBUTTONUP:
-                    {
-                        e.Result = new IntPtr(0);
-                        e.Handled = true;
-                        _msgMonitor.WindowMessageReceived -= Event;
-                        _msgMonitor.Dispose();
-                        RunMaximization();
-                        break;
-                    }
-                case WM_NCMOUSELEAVE:
-                    {
-                        e.Result = new IntPtr(0);
-                        e.Handled = true;
-                        VisualStateManager.GoToState(CrimsonMaxRes, "Normal", true);
-                        _msgMonitor.WindowMessageReceived -= Event;
-                        _msgMonitor.Dispose();
-                        break;
-                    }
-            }
-        };
-    }
-
-    #endregion MaximizeButton
-
-    #region MinimizeButton
-
-    WindowMessageMonitor _msgMonitor2;
-
-    bool isInMinButton = false;
-
-    private void CrimsonMinimize_PointerEntered(object sender, PointerRoutedEventArgs e)
-    {
-        isInMinButton = true;
-    }
-
-    private void CrimsonMinimize_PointerExited(object sender, PointerRoutedEventArgs e)
-    {
-        isInMinButton = false;
-    }
-
-    private void CrimsonMinimize_PointerPressed(object sender, PointerRoutedEventArgs e)
-    {
-        isInMinButton = false;
-    }
-
-    public async void TriggerAeroBasicglitch()
-    {
-        await Task.Delay(5000);
-        isInMaxButton = true;
-
-        IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-        if (_msgMonitor == null) _msgMonitor = new WindowMessageMonitor(hWnd);
-        _msgMonitor.WindowMessageReceived += Event;
-        void Event(object sender, WindowMessageEventArgs e)
-        {
-            const int WM_NCLBUTTONDOWN = 0x00A1;
-            const int WM_NCHITTEST = 0x0084;
-            const int WM_NCLBUTTONUP = 0x00A2;
-            const int WM_NCMOUSEHOVER = 0x02A0;
-            if (isInMaxButton == true)
-            {
-                e.Result = new IntPtr(9);
-                e.Handled = true;
-            }
-            else
-            {
-                e.Result = new IntPtr(0);
-                e.Handled = true;
-                _msgMonitor.WindowMessageReceived -= Event;
-                _msgMonitor.Dispose();
-            }
-
-            if (e.Message.MessageId == WM_NCLBUTTONDOWN)
-            {
-                e.Result = new IntPtr(0);
-                e.Handled = true;
-                VisualStateManager.GoToState(CrimsonMaxRes, "Pressed", true);
-            }
-            if (e.Message.MessageId == WM_NCLBUTTONUP)
-            {
-                e.Result = new IntPtr(0);
-                e.Handled = true;
-                _msgMonitor.WindowMessageReceived -= Event;
-                _msgMonitor.Dispose();
-                RunMaximization();
-            }
-        };
-
-        await Task.Delay(1000);
-
-        RunMaximization();
-
-        await Task.Delay(1000);
-
-        RunMaximization();
-
-        await Task.Delay(1000);
-
-        await Task.Delay(2000);
-
-        this.Minimize();
-
-        await Task.Delay(500);
-
-        this.BringToFront();
-
-        await Task.Delay(2000);
-
-        isInMinButton = true;
-        if (_msgMonitor2 == null) _msgMonitor2 = new WindowMessageMonitor(this);
-        IntPtr hWnd2 = WinRT.Interop.WindowNative.GetWindowHandle(this);
-        _msgMonitor2.WindowMessageReceived += Event2;
-        void Event2(object sender, WindowMessageEventArgs e)
-        {
-            const int WM_NCLBUTTONDOWN = 0x00A1;
-            //const int WM_NCHITTEST = 0x0084;
-            const int WM_NCLBUTTONUP = 0x00A2;
-            if (isInMinButton == true)
-            {
-                e.Result = new IntPtr(8);
-                e.Handled = true;
-            }
-            else
-            {
-                e.Result = new IntPtr(0);
-                e.Handled = true;
-                _msgMonitor2.WindowMessageReceived -= Event2;
-                _msgMonitor2.Dispose();
-            }
-
-            if (e.Message.MessageId == WM_NCLBUTTONDOWN)
-            {
-                e.Result = new IntPtr(0);
-                e.Handled = true;
-                VisualStateManager.GoToState(CrimsonMinimize, "Pressed", true);
-            }
-            if (e.Message.MessageId == WM_NCLBUTTONUP)
-            {
-                e.Result = new IntPtr(0);
-                e.Handled = true;
-                _msgMonitor2.WindowMessageReceived -= Event2;
-                _msgMonitor2.Dispose();
-                this.Minimize();
-            }
-        };
-        this.Minimize();
-
-        await Task.Delay(500);
-
-        this.Restore();
-    }
-
-    private void CrimsonMinimize_PointerMoved(object sender, PointerRoutedEventArgs e)
-    {
-        /*if (_msgMonitor2 == null) _msgMonitor2 = new WindowMessageMonitor(this);
-        IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-        _msgMonitor2.WindowMessageReceived += Event2;
-        async void Event2(object sender, WindowMessageEventArgs e)
-        {
-            const int WM_NCLBUTTONDOWN = 0x00A1;
-            const int WM_NCHITTEST = 0x0084;
-            const int WM_NCLBUTTONUP = 0x00A2;
-            const int WM_NCMOUSELEAVE = 0x02A2;
-            switch (e.Message.MessageId)
-            {
-                default:
-                    {
-                        e.Result = new IntPtr(0);
-                        e.Handled = true;
-                        break;
-                    }
-                case WM_NCHITTEST:
-                    {
-                        if (isInMinButton == true)
-                        {
-                            e.Result = new IntPtr(8);
-                            e.Handled = true;
-                            VisualStateManager.GoToState(CrimsonMinimize, "PointerOver", true);
-                            await Task.Delay(1000);
-                            _msgMonitor2.WindowMessageReceived -= Event2;
-                            _msgMonitor2.Dispose();
-                        }
-                        else
-                        {
-                            e.Result = new IntPtr(0);
-                            e.Handled = true;
-                            VisualStateManager.GoToState(CrimsonMinimize, "Normal", true);
-                            _msgMonitor2.WindowMessageReceived -= Event2;
-                            _msgMonitor2.Dispose();
-                        }
-                        break;
-                    }
-                case WM_NCLBUTTONDOWN:
-                    {
-                        e.Result = new IntPtr(0);
-                        e.Handled = true;
-                        VisualStateManager.GoToState(CrimsonMinimize, "Pressed", true);
-                        break;
-                    }
-                case WM_NCLBUTTONUP:
-                    {
-                        e.Result = new IntPtr(0);
-                        e.Handled = true;
-                        _msgMonitor2.WindowMessageReceived -= Event2;
-                        _msgMonitor2.Dispose();
-                        this.Minimize();
-                        break;
-                    }
-                case WM_NCMOUSELEAVE:
-                    {
-                        e.Result = new IntPtr(0);
-                        e.Handled = true;
-                        VisualStateManager.GoToState(CrimsonMinimize, "Normal", true);
-                        _msgMonitor2.WindowMessageReceived -= Event2;
-                        _msgMonitor2.Dispose();
-                        break;
-                    }
-            }
-        };*//*
-    }
-
-    #endregion MinimizeButton
-
-    #region CloseButton
-
-    WindowMessageMonitor _msgMonitor3;
-
-    bool isInCloseButton = false;
-
-    private void CrimsonClose_PointerEntered(object sender, PointerRoutedEventArgs e)
-    {
-        isInCloseButton = true;
-    }
-
-    private void CrimsonClose_PointerExited(object sender, PointerRoutedEventArgs e)
-    {
-        isInCloseButton = false;
-    }
-
-    private void CrimsonClose_PointerPressed(object sender, PointerRoutedEventArgs e)
-    {
-        isInCloseButton = false;
-    }
-
-    private void CrimsonClose_PointerMoved(object sender, PointerRoutedEventArgs e)
-    {
-        /*if (_msgMonitor3 == null) _msgMonitor3 = new WindowMessageMonitor(this);
-        IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-        _msgMonitor3.WindowMessageReceived += Event;
-        void Event(object sender, WindowMessageEventArgs e)
-        {
-            const int WM_NCLBUTTONDOWN = 0x00A1;
-            //const int WM_NCHITTEST = 0x0084;
-            const int WM_NCLBUTTONUP = 0x00A2;
-            if (isInCloseButton == true)
-            {
-                e.Result = new IntPtr(20);
-                e.Handled = true;
-            }
-            else
-            {
-                e.Result = new IntPtr(0);
-                e.Handled = true;
-                _msgMonitor3.WindowMessageReceived -= Event;
-                _msgMonitor3.Dispose();
-            }
-
-            if (e.Message.MessageId == WM_NCLBUTTONDOWN)
-            {
-                e.Result = new IntPtr(0);
-                e.Handled = true;
-                VisualStateManager.GoToState(CrimsonClose, "Pressed", true);
-            }
-            if (e.Message.MessageId == WM_NCLBUTTONUP)
-            {
-                e.Result = new IntPtr(0);
-                e.Handled = true;
-                _msgMonitor3.WindowMessageReceived -= Event;
-                _msgMonitor3.Dispose();
-                this.Close();
-            }
-        };*//*
-    }
-
-    #endregion CloseButton
-*/
     public void RunMaximization()
     {
         var state = (Presenter as OverlappedPresenter).State;
@@ -1047,7 +654,6 @@ public sealed partial class MainWindow : WindowEx
             RootFrame.Focus(FocusState.Programmatic);
             closeWidth = 46;
             additionalHeight = 6;
-            CaptionButtons.Margin = new Thickness(0);
             CheckMaximization();
             return;
         }
@@ -1058,7 +664,6 @@ public sealed partial class MainWindow : WindowEx
             RootFrame.Focus(FocusState.Programmatic);
             closeWidth = 46;
             additionalHeight = 0;
-            CaptionButtons.Margin = new Thickness(0);
             CheckMaximization();
             return;
         }

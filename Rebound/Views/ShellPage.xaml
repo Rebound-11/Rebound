@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <Page
     x:Class="Rebound.Views.ShellPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -8,70 +7,51 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
-        <NavigationView
-            x:Name="NavigationViewControl"
-            Margin="0,44,0,0"
-            BackRequested="NavigationViewControl_BackRequested"
-            Canvas.ZIndex="0"
-            ExpandedModeThresholdWidth="1280"
-            IsBackButtonVisible="Collapsed"
-            IsBackEnabled="{Binding CanGoBack, ElementName=NavigationFrame}"
-            IsSettingsVisible="False"
-            PaneTitle="Rebound Hub"
-            SelectionChanged="NavigationViewControl_SelectionChanged">
-            <NavigationView.MenuItems>
+    <NavigationView
+        x:Name="NavigationViewControl"
+        Canvas.ZIndex="0"
+        IsBackButtonVisible="Collapsed"
+        IsPaneToggleButtonVisible="False"
+        IsSettingsVisible="False"
+        ItemInvoked="Navigate"
+        OpenPaneLength="72"
+        PaneDisplayMode="Left"
+        Style="{ThemeResource CustomNavigationViewStyle}">
+        <NavigationView.PaneCustomContent>
+            <StackPanel>
                 <NavigationViewItem
-                    x:Name="HomeItem"
-                    Content="Home"
-                    Tag="Home">
+                    Content="Docs"
+                    Style="{ThemeResource CustomNavigationViewItemStyle}"
+                    Tapped="VisitDocsWebsite">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem
-                    x:Name="Rebound11Item"
-                    Content="Rebound 11"
-                    Tag="Rebound 11">
-                    <NavigationViewItem.Icon>
-                        <PathIcon Data="M 0 2 C 0 1 1 0 2 0 L 7 0 L 7 7 L 0 7 M 1 6 L 6 6 L 6 1 L 2 1 C 1.48 0.999 1.005 1.459 1 2 M 8 0 L 13 0 C 14 0 15 1 15 2 L 15 7 L 8 7 M 9 6 L 14 6 L 14 2 C 14.001 1.418 13.52 1 13 1 L 9 1 M 7 8 L 0 8 L 0 13 C 0 14 1 15 2 15 L 7 15 M 6 14 L 2 14 C 1.468 14.006 1.003 13.547 1 13 L 1 9 L 6 9 M 8 8 L 15 8 L 15 13 C 15 14 14 15 13 15 L 8 15 M 9 14 L 13 14 C 13.477 14 13.975 13.556 14 13 L 14 9 L 9 9 M 0 0 L 16 16" />
+                        <FontIcon FontFamily="ms-appx:///Fonts/FluentIcons.ttf#FluentSystemIcons-Resizable" Glyph="" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
-                    Content="CrimsonUI"
-                    IsEnabled="False"
-                    Tag="CrimsonUI">
+                    Content="Discord"
+                    Style="{ThemeResource CustomNavigationViewItemStyle}"
+                    Tapped="GoToDiscordServer">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="" />
+                        <PathIcon
+                            Margin="3"
+                            Data="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z"
+                            RenderTransformOrigin="0.5,0.5">
+                            <PathIcon.RenderTransform>
+                                <ScaleTransform ScaleX="0.9" ScaleY="0.9" />
+                            </PathIcon.RenderTransform>
+                        </PathIcon>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem
-                    Content="Ivirius.UI"
-                    IsEnabled="False"
-                    Tag="Ivirius.UI">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-            </NavigationView.MenuItems>
-            <NavigationView.FooterMenuItems>
-                <NavigationViewItem Content="Control Panel" Tag="Control Panel">
-                    <NavigationViewItem.Icon>
-                        <PathIcon Margin="1,2,-1,-2" Data="M -1 2 C -1 1 0 0 1 0 L 12 0 C 13 0 14 1 14 2 L 14 9 C 14 10 13 11 12 11 L 1 11 C 0 11 -1 10 -1 9 Z M 0 9 C 0.006 9.481 0.477 10.016 1 10 L 12 10 C 12.527 10.016 12.998 9.524 13 9 L 13 2 C 12.997 1.513 12.52 0.992 12 1 L 1 1 C 0.499 1 0.002 1.448 0 2 Z M 3.51 1.994 A 1 1 0 0 0 3.531 6.998 A 1 1 0 0 0 3.521 1.994 M 3.5 3 L 3.5 4.5 L 5 4.5 C 5 5.333 4.333 6 3.5 6 C 2.666 6 2 5.333 2 4.5 C 2 3.666 2.666 3 3.5 3 Z M 7 2 L 12 2 L 12 3 L 7 3 M 7 4 L 12 4 L 12 5 L 7 5 M 7 6 L 12 6 L 12 7 L 7 7 M 1 8 L 12 8 L 12 9 L 1 9 M 8 8 L 16 16" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-                <NavigationViewItem
-                    Content="Legal terms"
-                    IsEnabled="False"
-                    Tag="Legal terms">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="" />
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-            </NavigationView.FooterMenuItems>
-            <Grid>
-                <Frame x:Name="NavigationFrame" />
-            </Grid>
-        </NavigationView>
-    </Grid>
+            </StackPanel>
+        </NavigationView.PaneCustomContent>
+        <NavigationView.Content>
+            <Frame
+                x:Name="MainFrame"
+                Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1,1,0,0"
+                CornerRadius="8,0,0,0" />
+        </NavigationView.Content>
+    </NavigationView>
+
 </Page>
