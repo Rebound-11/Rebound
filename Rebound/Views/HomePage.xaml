@@ -11,6 +11,7 @@
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:ivirius="using:Ivirius.UI.Controls"
     xmlns:local="using:Rebound.Views"
+    xmlns:lang="using:Rebound.Languages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
@@ -33,10 +34,10 @@
                             HorizontalAlignment="Left"
                             Source="/Assets/AppIcons/IviriusCommunityIcon.png" />
                         <StackPanel Margin="125,0,0,0">
-                            <TextBlock Style="{ThemeResource TitleLargeTextBlockStyle}" Text="This is Ivirius." />
+                            <TextBlock Style="{ThemeResource TitleLargeTextBlockStyle}" Text="{x:Bind lang:StringTable.Title}" />
                             <TextBlock
                                 FontSize="18"
-                                Text="We made apps and tools for you to have the best experience with Windows 11."
+                                Text="{x:Bind lang:StringTable.Description}"
                                 TextWrapping="WrapWholeWords" />
                         </StackPanel>
                     </Grid>
@@ -174,7 +175,7 @@
                                         Margin="0,5,0,0"
                                         FontSize="11"
                                         Opacity="0.7"
-                                        Text="Fluent WordPad app for Windows 10 and 11.&#x0a;"
+                                        Text="{x:Bind lang:StringTable.IviriusTextEditorDesc}"
                                         TextWrapping="WrapWholeWords" />
                                     <FontIcon
                                         Margin="0,10,0,0"
@@ -211,7 +212,7 @@
                                         Margin="0,5,0,0"
                                         FontSize="11"
                                         Opacity="0.7"
-                                        Text="Fluent WordPad app with advanced features and beautiful UI.&#x0a;"
+                                        Text="{x:Bind lang:StringTable.IviriusTextEditorPlusDesc}"
                                         TextWrapping="WrapWholeWords" />
                                     <FontIcon
                                         Margin="0,10,0,0"
@@ -247,7 +248,7 @@
                                         Margin="0,5,0,0"
                                         FontSize="11"
                                         Opacity="0.7"
-                                        Text="The first WinUI 3 Windows mod that aims to bring consistency to the OS."
+                                        Text="{x:Bind lang:StringTable.ReboundItemDesc}"
                                         TextWrapping="WrapWholeWords" />
                                     <FontIcon
                                         Margin="0,10,0,0"
@@ -278,7 +279,7 @@
                                         Margin="0,5,0,0"
                                         FontSize="11"
                                         Opacity="0.7"
-                                        Text="Add a little bit of light to your Windows build using CrimsonUI.&#x0a;"
+                                        Text="{x:Bind lang:StringTable.CrimsonDesc}"
                                         TextWrapping="WrapWholeWords" />
                                     <FontIcon
                                         Margin="0,10,0,0"
@@ -313,12 +314,12 @@
                                     <TextBlock
                                         Margin="0,15,0,0"
                                         FontSize="20"
-                                        Text="Docs" />
+                                        Text="{x:Bind lang:StringTable.Docs}" />
                                     <TextBlock
                                         Margin="0,5,0,0"
                                         FontSize="11"
                                         Opacity="0.7"
-                                        Text="Learn more about how to use Ivirius apps and contribute to projects.&#x0a;"
+                                        Text="{x:Bind lang:StringTable.DocsDesc}"
                                         TextWrapping="WrapWholeWords" />
                                     <FontIcon
                                         Margin="0,10,0,0"
@@ -363,12 +364,12 @@
                                         <TextBlock
                                             Margin="0,15,0,0"
                                             FontSize="20"
-                                            Text="Discord Server" />
+                                            Text="{x:Bind lang:StringTable.DiscordServer}" />
                                         <TextBlock
                                             Margin="0,5,0,0"
                                             FontSize="11"
                                             Opacity="0.7"
-                                            Text="Invite link to our Discord server.&#x0a;&#x0a;"
+                                            Text="{x:Bind lang:StringTable.DiscordServerDesc}"
                                             TextWrapping="WrapWholeWords" />
                                         <FontIcon
                                             Margin="0,10,0,0"
@@ -397,7 +398,7 @@
                         Margin="10,0"
                         FontSize="26"
                         Style="{ThemeResource SubtitleTextBlockStyle}"
-                        Text="Rebound 11 apps docs" />
+                        Text="{x:Bind lang:StringTable.AppDocs}" />
                 </StackPanel>
                 <ToolkitControls:WrapPanel
                     Margin="50,520,50,25"
@@ -424,10 +425,10 @@
                             <TextBlock
                                 Margin="110,0,0,0"
                                 Style="{ThemeResource SubtitleTextBlockStyle}"
-                                Text="Control Panel" />
+                                Text="{x:Bind lang:StringTable.ControlPanel}" />
                             <TextBlock
                                 Margin="110,30,0,0"
-                                Text="Manage system settings and configurations"
+                                Text="{x:Bind lang:StringTable.ControlPanelDesc}"
                                 TextWrapping="Wrap" />
                         </Grid>
                         <interactivity:Interaction.Behaviors>
@@ -457,10 +458,10 @@
                             <TextBlock
                                 Margin="110,0,0,0"
                                 Style="{ThemeResource SubtitleTextBlockStyle}"
-                                Text="Defragment and Optimize Drives" />
+                                Text="{x:Bind lang:StringTable.Defrag}" />
                             <TextBlock
                                 Margin="110,30,0,0"
-                                Text="Optimize and defragment your drives"
+                                Text="{x:Bind lang:StringTable.DefragDesc}"
                                 TextWrapping="Wrap" />
                         </Grid>
                         <interactivity:Interaction.Behaviors>
@@ -490,10 +491,10 @@
                             <TextBlock
                                 Margin="110,0,0,0"
                                 Style="{ThemeResource SubtitleTextBlockStyle}"
-                                Text="Disk Cleanup" />
+                                Text="{x:Bind lang:StringTable.Cleanup}" />
                             <TextBlock
                                 Margin="110,30,0,0"
-                                Text="Free up space by removing unnecessary files"
+                                Text="{x:Bind lang:StringTable.CleanupDesc}"
                                 TextWrapping="Wrap" />
                         </Grid>
                         <interactivity:Interaction.Behaviors>
@@ -524,10 +525,10 @@
                             <TextBlock
                                 Margin="110,0,0,0"
                                 Style="{ThemeResource SubtitleTextBlockStyle}"
-                                Text="Event Viewer" />
+                                Text="{x:Bind lang:StringTable.EventViewer}" />
                             <TextBlock
                                 Margin="110,30,0,0"
-                                Text="View detailed logs of system events"
+                                Text="{x:Bind lang:StringTable.EventViewerDesc}"
                                 TextWrapping="Wrap" />
                         </Grid>
                         <interactivity:Interaction.Behaviors>
@@ -560,7 +561,7 @@
                                 Text="Files" />
                             <TextBlock
                                 Margin="110,30,0,0"
-                                Text="Modern file explorer for Windows 11"
+                                Text="{x:Bind lang:StringTable.FilesDesc}"
                                 TextWrapping="Wrap" />
                             <Border
                                 Padding="12,5"
@@ -571,7 +572,7 @@
                                 <TextBlock
                                     FontWeight="Bold"
                                     Opacity="0.5"
-                                    Text="3rd Party" />
+                                    Text="{x:Bind lang:StringTable.Files3rd}" />
                             </Border>
                         </Grid>
                         <interactivity:Interaction.Behaviors>
@@ -604,7 +605,7 @@
                                 Text="Ivirius Text Editor" />
                             <TextBlock
                                 Margin="110,30,0,0"
-                                Text="Modern WordPad app for Windows 11"
+                                Text="{x:Bind lang:StringTable.IviriusTextEditorDocsDesc}"
                                 TextWrapping="Wrap" />
                         </Grid>
                         <interactivity:Interaction.Behaviors>
@@ -634,10 +635,10 @@
                             <TextBlock
                                 Margin="110,0,0,0"
                                 Style="{ThemeResource SubtitleTextBlockStyle}"
-                                Text="On-Screen Keyboard" />
+                                Text="{x:Bind lang:StringTable.Keyboard}" />
                             <TextBlock
                                 Margin="110,30,0,0"
-                                Text="Access a virtual keyboard on screen"
+                                Text="{x:Bind lang:StringTable.KeyboardDesc}"
                                 TextWrapping="Wrap" />
                         </Grid>
                         <interactivity:Interaction.Behaviors>
@@ -667,10 +668,10 @@
                             <TextBlock
                                 Margin="110,0,0,0"
                                 Style="{ThemeResource SubtitleTextBlockStyle}"
-                                Text="Run" />
+                                Text="{x:Bind lang:StringTable.Run}" />
                             <TextBlock
                                 Margin="110,30,0,0"
-                                Text="Quickly launch programs or commands"
+                                Text="{x:Bind lang:StringTable.RunDesc}"
                                 TextWrapping="Wrap" />
                         </Grid>
                         <interactivity:Interaction.Behaviors>
@@ -701,10 +702,10 @@
                             <TextBlock
                                 Margin="110,0,0,0"
                                 Style="{ThemeResource SubtitleTextBlockStyle}"
-                                Text="Task Scheduler" />
+                                Text="{x:Bind lang:StringTable.Tasks}" />
                             <TextBlock
                                 Margin="110,30,0,0"
-                                Text="Automate tasks on your PC"
+                                Text="{x:Bind lang:StringTable.TasksDesc}"
                                 TextWrapping="Wrap" />
                         </Grid>
                         <interactivity:Interaction.Behaviors>
@@ -734,10 +735,10 @@
                             <TextBlock
                                 Margin="110,0,0,0"
                                 Style="{ThemeResource SubtitleTextBlockStyle}"
-                                Text="TPM" />
+                                Text="{x:Bind lang:StringTable.TPM}" />
                             <TextBlock
                                 Margin="110,30,0,0"
-                                Text="Manage the Trusted Platform Module"
+                                Text="{x:Bind lang:StringTable.TPMDesc}"
                                 TextWrapping="Wrap" />
                         </Grid>
                         <interactivity:Interaction.Behaviors>
@@ -770,7 +771,7 @@
                                 Text="Winver" />
                             <TextBlock
                                 Margin="110,30,0,0"
-                                Text="View details about your Windows version"
+                                Text="{x:Bind lang:StringTable.WinverDesc}"
                                 TextWrapping="Wrap" />
                         </Grid>
                         <interactivity:Interaction.Behaviors>

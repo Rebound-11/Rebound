@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Rebound.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:lang="using:Rebound.Languages"
     mc:Ignorable="d">
 
     <Grid>
@@ -23,7 +24,7 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem
                     x:Name="HomeItem"
-                    Content="Home"
+                    Content="{x:Bind lang:StringTable.ShellPageHome}"
                     Tag="Home">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="" />
@@ -55,13 +56,13 @@
                 </NavigationViewItem>
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
-                <NavigationViewItem Content="Control Panel" Tag="Control Panel">
+                <NavigationViewItem Content="{x:Bind lang:StringTable.ShellPageControl}" Tag="Control Panel">
                     <NavigationViewItem.Icon>
                         <PathIcon Margin="1,2,-1,-2" Data="M -1 2 C -1 1 0 0 1 0 L 12 0 C 13 0 14 1 14 2 L 14 9 C 14 10 13 11 12 11 L 1 11 C 0 11 -1 10 -1 9 Z M 0 9 C 0.006 9.481 0.477 10.016 1 10 L 12 10 C 12.527 10.016 12.998 9.524 13 9 L 13 2 C 12.997 1.513 12.52 0.992 12 1 L 1 1 C 0.499 1 0.002 1.448 0 2 Z M 3.51 1.994 A 1 1 0 0 0 3.531 6.998 A 1 1 0 0 0 3.521 1.994 M 3.5 3 L 3.5 4.5 L 5 4.5 C 5 5.333 4.333 6 3.5 6 C 2.666 6 2 5.333 2 4.5 C 2 3.666 2.666 3 3.5 3 Z M 7 2 L 12 2 L 12 3 L 7 3 M 7 4 L 12 4 L 12 5 L 7 5 M 7 6 L 12 6 L 12 7 L 7 7 M 1 8 L 12 8 L 12 9 L 1 9 M 8 8 L 16 16" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
-                    Content="Legal terms"
+                    Content="{x:Bind lang:StringTable.ShellPageLegalTerms}"
                     IsEnabled="False"
                     Tag="Legal terms">
                     <NavigationViewItem.Icon>

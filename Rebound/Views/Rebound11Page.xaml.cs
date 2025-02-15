@@ -7,6 +7,7 @@ using System.Security.Principal;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Rebound.Languages;
 using WinUIEx;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -120,28 +121,28 @@ public sealed partial class Rebound11Page : Page
                 UpdateBar.IsOpen = true;
                 if (latestVersion.Contains("ALPHA"))
                 {
-                    UpdateBar.Title = $"A new ALPHA release is available for Rebound Hub and Rebound 11! (New version: {latestVersion})";
-                    UpdateBar.Message = "Note: ALPHA versions can be unstable.";
+                    UpdateBar.Title = StringTable.ReboundNewALPHA + $"{latestVersion})";
+                    UpdateBar.Message = StringTable.ReboundNewALPHAwarn;
                     UpdateBar.Severity = InfoBarSeverity.Warning;
                     return;
                 }
                 if (latestVersion.Contains("DEV"))
                 {
-                    UpdateBar.Title = $"A new DEV release is available for Rebound Hub and Rebound 11! (New version: {latestVersion})";
-                    UpdateBar.Message = "Note: DEV versions can be unstable.";
+                    UpdateBar.Title = StringTable.ReboundNewDEV + $"{latestVersion})";
+                    UpdateBar.Message = StringTable.ReboundNewDEVwarn;
                     UpdateBar.Severity = InfoBarSeverity.Warning;
                     return;
                 }
                 if (latestVersion.Contains("BETA"))
                 {
-                    UpdateBar.Title = $"A new BETA release is available for Rebound Hub and Rebound 11! (New version: {latestVersion})";
-                    UpdateBar.Message = "Note: BETA versions can be glitchy.";
+                    UpdateBar.Title = StringTable.ReboundNewBETA + $"{latestVersion})";
+                    UpdateBar.Message = StringTable.ReboundNewBETAwarn;
                     UpdateBar.Severity = InfoBarSeverity.Warning;
                     return;
                 }
                 else
                 {
-                    UpdateBar.Title = $"A new update is available for Rebound Hub and Rebound 11! (New version: {latestVersion})";
+                    UpdateBar.Title = StringTable.ReboundNewUpdate + $"{latestVersion})";
                     UpdateBar.Severity = InfoBarSeverity.Success;
                     return;
                 }
@@ -152,7 +153,7 @@ public sealed partial class Rebound11Page : Page
             // Handle any errors that occur during the request
             UpdateBar.IsOpen = true;
             UpdateBar.Severity = InfoBarSeverity.Error;
-            UpdateBar.Title = "Something went wrong.";
+            UpdateBar.Title = StringTable.ReboundError;
         }
     }
 
