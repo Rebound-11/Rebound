@@ -1,0 +1,10 @@
+<Project>
+    <!-- Get the "short" name of the Rebound 11 app for various uses -->
+    <PropertyGroup>
+        <ProjectName>$(MSBuildProjectName)</ProjectName>
+        <!-- Get the last part of the ProjectName -->
+        <_ShortName>$([System.Text.RegularExpressions.Regex]::Match($(ProjectName), '[^\.]+$').Value)</_ShortName>
+        <!-- Add 'r' in front of it -->
+        <ShortName>r$(_ShortName.ToLowerInvariant())</ShortName>
+    </PropertyGroup>
+</Project>

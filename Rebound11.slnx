@@ -50,7 +50,7 @@
     </Project>
   </Folder>
   <Folder Name="/src/core/" Id="fb5d6fae-fad5-4679-aec2-b8fb3878993e">
-    <Project Path="src/core/Rebound.Core.Helpers/Rebound.Core.Helpers.csproj">
+    <Project Path="src/core/Rebound.Core/Rebound.Core.csproj" Id="c4d4a457-27ee-65e8-16b8-efacb34d7eec">
       <Platform Solution="*|x64" Project="x64" />
     </Project>
     <Project Path="src/core/Rebound.Core.SourceGenerator/Rebound.Core.SourceGenerator.csproj">

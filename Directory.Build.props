@@ -1,0 +1,19 @@
+<Project>
+	<Import Project="$(MSBuildThisFileDirectory)eng\AppShortName.props" />
+	<Import Project="$(MSBuildThisFileDirectory)eng\DefinedConstants.props" />
+	<Import Project="$(MSBuildThisFileDirectory)eng\AdditionalFiles.props" />
+	<!-- Directories -->
+	<PropertyGroup>
+		<RootDirectory Condition=" '$(RootDirectory)' == '' ">$(MSBuildThisFileDirectory)</RootDirectory>
+		<SourceDirectory Condition=" '$(SourceDirectory)' == '' ">$(MSBuildThisFileDirectory)src</SourceDirectory>
+		<BuildDirectory Condition=" '$(BuildDirectory)' == '' ">$(RootDirectory)eng</BuildDirectory>
+		<RepositoryFilesDirectory Condition=" '$(RepositoryFilesDirectory)' == '' ">$(RootDirectory).github</RepositoryFilesDirectory>
+		<ToolkitDirectory Condition=" '$(ToolkitDirectory)' == '' ">$(SourceDirectory)\platforms</ToolkitDirectory>
+		<SharedDirectory Condition=" '$(SharedDirectory)' == '' ">$(SourceDirectory)\core</SharedDirectory>
+
+		<Tooling Condition=" '$(Tooling)' == '' ">$(BuildDirectory)\WinAppSDK.props</Tooling>
+		<SharedProject Condition=" '$(SharedProject)' == '' ">$(SharedDirectory)\Rebound.Core\Rebound.Core.csproj</SharedProject>
+
+		<ProjectName>$(MSBuildProjectName)</ProjectName>
+	</PropertyGroup>
+</Project>

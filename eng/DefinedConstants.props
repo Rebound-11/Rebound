@@ -1,0 +1,5 @@
+<Project>
+	<PropertyGroup>
+		<DefineConstants>$(DefineConstants);$(ProjectName)</DefineConstants>
+	</PropertyGroup>
+</Project>

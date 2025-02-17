@@ -1,0 +1,7 @@
+<Project>
+	<ItemGroup>
+		<None Include="$(RootDirectory)\.editorconfig" />
+		<None Include="$(RootDirectory)\Directory.Build.props" />
+		<None Include="$(RootDirectory)\Directory.Packages.props" />
+	</ItemGroup>
+</Project>
