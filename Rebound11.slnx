@@ -13,6 +13,12 @@
       <Platform Solution="*|x86" Project="x86" />
       <Deploy />
     </Project>
+    <Project Path="src/components/management/Rebound.ManagementConsole/Rebound.ManagementConsole/Rebound.ManagementConsole.csproj" Id="87a75c3d-4497-4c2f-becf-ce477a8cbf4d">
+      <Platform Solution="*|ARM64" Project="ARM64" />
+      <Platform Solution="*|x64" Project="x64" />
+      <Platform Solution="*|x86" Project="x86" />
+      <Deploy />
+    </Project>
   </Folder>
   <Folder Name="/src/components/shell/" Id="14547d38-0320-4d63-88ef-3352e4e46d22">
     <Project Path="Rebound.Shell.Desktop/Rebound.Shell.Desktop.csproj" Id="aa23b7a0-f8a4-4d3a-bda8-2daeefa5c721">

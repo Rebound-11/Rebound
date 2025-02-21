@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="Rebound.ManagementConsole.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Rebound.ManagementConsole"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Rebound.ManagementConsole"
+    mc:Ignorable="d">
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+    <Grid>
+        <TabView VerticalAlignment="Stretch" IsAddTabButtonVisible="False">
+            <TabView.TabItems>
+                <TabViewItem />
+            </TabView.TabItems>
+            <TabView.TabStripFooter>
+                <SplitButton Margin="4,0">
+                    <FontIcon FontSize="16" Glyph="&#xE710;" />
+                </SplitButton>
+            </TabView.TabStripFooter>
+        </TabView>
+        <Grid Margin="0,40,0,0" Background="{ThemeResource LayerOnMicaBaseAltFillColorDefaultBrush}">
+            <StackPanel
+                Margin="8"
+                VerticalAlignment="Top"
+                Orientation="Horizontal"
+                Spacing="8">
+                <Button
+                    Padding="8"
+                    Background="Transparent"
+                    BorderBrush="Transparent">
+                    <FontIcon FontSize="16" Glyph="&#xF0D3;" />
+                </Button>
+                <Button
+                    Padding="8"
+                    Background="Transparent"
+                    BorderBrush="Transparent">
+                    <FontIcon FontSize="16" Glyph="&#xF0D2;" />
+                </Button>
+                <Button
+                    Padding="8"
+                    Background="Transparent"
+                    BorderBrush="Transparent">
+                    <FontIcon FontSize="16" Glyph="&#xE74A;" />
+                </Button>
+                <Button
+                    Padding="8"
+                    Background="Transparent"
+                    BorderBrush="Transparent">
+                    <FontIcon FontSize="16" Glyph="&#xE72C;" />
+                </Button>
+                <Border
+                    Width="1"
+                    Height="20"
+                    Background="{ThemeResource DividerStrokeColorDefaultBrush}" />
+                <DropDownButton
+                    Padding="8"
+                    Background="Transparent"
+                    BorderBrush="Transparent">
+                    <FontIcon FontSize="16" Glyph="&#xE710;" />
+                    <DropDownButton.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Text="Folder">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE8B7;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+                <Button
+                    Padding="8"
+                    Background="Transparent"
+                    BorderBrush="Transparent">
+                    <FontIcon FontSize="16" Glyph="&#xE70F;" />
+                </Button>
+                <Button
+                    Padding="8"
+                    Background="Transparent"
+                    BorderBrush="Transparent">
+                    <FontIcon FontSize="16" Glyph="&#xE74D;" />
+                </Button>
+            </StackPanel>
+            <Button
+                Margin="8"
+                Padding="8"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                BorderBrush="Transparent">
+                <FontIcon FontSize="16" Glyph="&#xED15;" />
+            </Button>
+            <Grid>
+                <NavigationView
+                    Margin="0,48,0,0"
+                    IsBackButtonVisible="Collapsed"
+                    IsSettingsVisible="False">
+                    <NavigationView.MenuItems>
+                        <NavigationViewItem Content="Console Root">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE8B7;" />
+                            </NavigationViewItem.Icon>
+                            <NavigationViewItem.MenuItems>
+                                <NavigationViewItem Content="Task Scheduler (Local)">
+                                    <NavigationViewItem.Icon>
+                                        <FontIcon Glyph="&#xE917;" />
+                                    </NavigationViewItem.Icon>
+                                    <NavigationViewItem.MenuItems>
+                                        <NavigationViewItem Content="Task Scheduler Library">
+                                            <NavigationViewItem.Icon>
+                                                <FontIcon Glyph="&#xED43;" />
+                                            </NavigationViewItem.Icon>
+                                        </NavigationViewItem>
+                                    </NavigationViewItem.MenuItems>
+                                </NavigationViewItem>
+                            </NavigationViewItem.MenuItems>
+                        </NavigationViewItem>
+                    </NavigationView.MenuItems>
+                </NavigationView>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
