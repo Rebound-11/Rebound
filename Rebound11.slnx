@@ -4,7 +4,9 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Folder Name="/src/" Id="02ea681e-c7d8-13c7-8484-4ac65e1b71e8" />
+  <Folder Name="/src/" Id="02ea681e-c7d8-13c7-8484-4ac65e1b71e8">
+    <File Path="Directory.Build.props" />
+  </Folder>
   <Folder Name="/src/components/" Id="1e181218-d949-4ca9-8875-49983143917e" />
   <Folder Name="/src/components/management/" Id="91439590-63d6-49cc-90f1-43dbf60f4154">
     <Project Path="src/components/management/Rebound.ManagementConsole.TrustedPlatform/Rebound.ManagementConsole.TrustedPlatform.csproj">

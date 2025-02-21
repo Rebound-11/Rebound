@@ -1,0 +1,27 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  
+  <!-- Set target framework to .NET 8 for WinUI 3 compatibility -->
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+    <PublishAot>false</PublishAot>
+    <SupportedOSPlatformVersion>10.0.22621.0</SupportedOSPlatformVersion>
+
+    <!-- Disable trimming (could break WinUI 3 if enabled) -->
+    <PublishTrimmed>false</PublishTrimmed>
+
+    <!-- Enable MSIX tooling and other necessary settings -->
+    <UseWinUI>true</UseWinUI>
+
+    <!-- Allow unsafe code blocks -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+    <!-- Ensure compatibility with COM Interop -->
+    <EnableComInterop>true</EnableComInterop>
+  </PropertyGroup>
+
+  <!-- Define versions and other global properties -->
+  <PropertyGroup>
+    <WindowsSdkPackageVersion>10.0.22621.38</WindowsSdkPackageVersion>
+  </PropertyGroup>
+
+</Project>
